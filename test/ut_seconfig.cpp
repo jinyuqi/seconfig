@@ -3,7 +3,7 @@
 
 TEST(SEConfig, NormalTestForSomeValue)
 {
-    SEConfig config("test.config");
+    SEConfig config("../../test/res/test.config");
     EXPECT_EQ("123" ,config.stringOf("home"));
     EXPECT_EQ("123" ,config.stringOf("3421"));
     EXPECT_EQ("321" ,config.stringOf("test"));
