@@ -1,3 +1,9 @@
+//
+// Author: Jin Yuqi (Ricky)
+// Email: 179386223@qq.com
+// Date: 2018.08.02
+//
+
 #ifndef __SECONFIG__
 #define __SECONFIG__
 

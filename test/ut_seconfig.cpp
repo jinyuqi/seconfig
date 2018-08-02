@@ -1,9 +1,11 @@
 #include <gtest/gtest.h>
 #include "seconfig.h"
 
+#define TESTFILE_NAME "../../test/res/test.config"
+
 TEST(SEConfig, NormalTestForSomeValue)
 {
-    SEConfig config("../../test/res/test.config");
+    SEConfig config(TESTFILE_NAME);
     EXPECT_EQ("123" ,config.stringOf("home"));
     EXPECT_EQ("123" ,config.stringOf("3421"));
     EXPECT_EQ("321" ,config.stringOf("test"));
@@ -11,7 +13,7 @@ TEST(SEConfig, NormalTestForSomeValue)
 
 TEST(SEConfig, NormalTestForEmptyValue)
 {
-    SEConfig config("test.config");
+    SEConfig config(TESTFILE_NAME);
     EXPECT_EQ("" ,config.stringOf("home123"));
     EXPECT_EQ("123" ,config.stringOf("home"));
     EXPECT_EQ("" ,config.stringOf("home321"));
@@ -20,7 +22,7 @@ TEST(SEConfig, NormalTestForEmptyValue)
 
 TEST(SEConfig, SecondGlobalCategory)
 {
-    SEConfig config("test.config");
+    SEConfig config(TESTFILE_NAME);
     EXPECT_EQ("123" ,config.stringOf("home"));
     EXPECT_EQ("123" ,config.stringOf("3421"));
     EXPECT_EQ("321" ,config.stringOf("test"));
@@ -31,7 +33,7 @@ TEST(SEConfig, SecondGlobalCategory)
 
 TEST(SEConfig, ThirdGlobalCrossNormalCategory)
 {
-    SEConfig config("test.config");
+    SEConfig config(TESTFILE_NAME);
     EXPECT_EQ("123" ,config.stringOf("home"));
     EXPECT_EQ("123" ,config.stringOf("3421"));
     EXPECT_EQ("321" ,config.stringOf("test"));
@@ -43,13 +45,13 @@ TEST(SEConfig, ThirdGlobalCrossNormalCategory)
 
 TEST(SEConfig, NormalTestForOverlap)
 {
-    SEConfig config("test.config");
+    SEConfig config(TESTFILE_NAME);
     EXPECT_EQ("333" ,config.stringOf("nihao"));
 }
 
 TEST(SEConfig, SpecialCategoryGet)
 {
-    SEConfig config("test.config");
+    SEConfig config(TESTFILE_NAME);
     EXPECT_EQ("345" ,config.stringOf("nihao", "Test"));
     EXPECT_EQ("333" ,config.stringOf("nihao", "Global"));
     EXPECT_EQ("333" ,config.stringOf("nihao"));
@@ -57,7 +59,7 @@ TEST(SEConfig, SpecialCategoryGet)
 
 TEST(SEConfig, NormalGetInt)
 {
-    SEConfig config("test.config");
+    SEConfig config(TESTFILE_NAME);
     EXPECT_EQ(333, config.intOf("nihao"));
 
 }
