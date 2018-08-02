@@ -32,7 +32,7 @@ void SEConfig::loadConfigFile(const std::string &fileName)
 
 void SEConfig::processLine(const std::string &line)
 {
-    if (IsCategory(line))
+    if (isCategory(line))
     {
         auto j = line.find('[');
         auto k = line.find(']');
@@ -43,7 +43,7 @@ void SEConfig::processLine(const std::string &line)
             m_currentProcessCategory = category;
         }
     }
-    else if (IsKeyValueLine(line))
+    else if (isKeyValueLine(line))
     {
         auto key = getKeyFromLine(line);
         auto value = getValueFromLine(line);
@@ -71,7 +71,7 @@ std::string SEConfig::getValueFromLine(const std::string &line) const
     return tempRes;
 }
 
-bool SEConfig::IsKeyValueLine(const std::string line) const
+bool SEConfig::isKeyValueLine(const std::string line) const
 {
     if (line.find('=') != string::npos && std::count(line.begin(), line.end(), '=') == 1)
     {
@@ -81,7 +81,7 @@ bool SEConfig::IsKeyValueLine(const std::string line) const
     return false;
 }
 
-bool SEConfig::IsCategory(const std::string line) const
+bool SEConfig::isCategory(const std::string line) const
 {
     if (line.find('[') != string::npos && line.find(']') != string::npos)
     {

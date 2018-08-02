@@ -19,8 +19,8 @@ public:
 private:
     void loadConfigFile(const std::string &fileName);
     void processLine(const std::string &line);
-    bool IsCategory(const std::string line) const;
-    bool IsKeyValueLine(const std::string line) const;
+    bool isCategory(const std::string line) const;
+    bool isKeyValueLine(const std::string line) const;
     std::string getKeyFromLine(const std::string &line) const;
     std::string getValueFromLine(const std::string &line) const;
 private:
